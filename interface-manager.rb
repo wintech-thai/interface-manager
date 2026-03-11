@@ -7,10 +7,7 @@ set :port, 8080
 set :protection, :except => :host_header
 
 set :host_authorization, {
-  permitted_hosts: [
-    "localhost",
-    ".svc.cluster.local"
-  ]
+  permitted_hosts: []
 }
 
 STATE_FILE = "/data/state.json"
