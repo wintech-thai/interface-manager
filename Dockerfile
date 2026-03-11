@@ -3,8 +3,8 @@ FROM ruby:3.3-alpine
 RUN gem install sinatra --no-document
 
 WORKDIR /app
-COPY iface-manager.rb .
+COPY interface-manager.rb .
 
 RUN mkdir /data
 
-CMD ["ruby","iface-manager.rb"]
+CMD ["ruby","interface-manager.rb"]
