@@ -1,10 +1,10 @@
 FROM ruby:3.3-alpine
 
-RUN gem install sinatra rackup puma --no-document
+RUN gem install sinatra --no-document
 
 WORKDIR /app
-COPY interface-manager.rb .
+COPY iface-manager.rb .
 
 RUN mkdir /data
 
-CMD ["ruby","interface-manager.rb"]
+CMD ["ruby","iface-manager.rb"]
