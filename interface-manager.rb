@@ -155,6 +155,14 @@ get '/interfaces/all' do
   }.to_json
 end
 
+# enabled interfaces (plain text for zeek)
+get '/interfaces/enabled' do
+  enabled = physical_interfaces.reject { |i| STATE["disabled"].include?(i) }
+
+  content_type "text/plain"
+  enabled.join("\n")
+end
+
 # health check
 get '/healthz' do
   content_type :json
