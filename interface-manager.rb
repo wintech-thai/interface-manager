@@ -4,11 +4,7 @@ require 'json'
 set :bind, '0.0.0.0'
 set :port, 8080
 
-# 1. ปิดระบบ Protection ทั้งหมดของ Sinatra
-set :protection, false
-
-# 2. ปิด Host Authorization ในระดับ Rack โดยตรง (ถ้าข้อ 1 ยังไม่ออก)
-disable :protection
+set :protection, :except => :host_authorization
 
 STATE_FILE = "/data/state.json"
 
