@@ -3,7 +3,6 @@ require 'json'
 
 set :bind, '0.0.0.0'
 set :port, 8080
-set :server, :webrick
 
 STATE_FILE = "/data/state.json"
 
