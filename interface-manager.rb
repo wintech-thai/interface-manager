@@ -4,7 +4,14 @@ require 'json'
 set :bind, '0.0.0.0'
 set :port, 8080
 
-set :protection, :except => :host_authorization
+set :protection, :except => :host_header
+
+set :host_authorization, {
+  permitted_hosts: [
+    "localhost",
+    ".svc.cluster.local"
+  ]
+}
 
 STATE_FILE = "/data/state.json"
 
