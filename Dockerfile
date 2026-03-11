@@ -1,6 +1,6 @@
 FROM ruby:3.3-alpine
 
-RUN gem install rackup puma
+RUN gem install sinatra rackup puma --no-document
 
 WORKDIR /app
 COPY interface-manager.rb .
