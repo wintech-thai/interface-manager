@@ -3,7 +3,12 @@ require 'json'
 
 set :bind, '0.0.0.0'
 set :port, 8080
-set :server, :webrick
+
+set :protection, :except => :host_header
+
+set :host_authorization, {
+  permitted_hosts: []
+}
 
 STATE_FILE = "/data/state.json"
 
@@ -148,6 +153,14 @@ get '/interfaces/all' do
     interfaces: result,
     disabled: STATE["disabled"]
   }.to_json
+end
+
+# enabled interfaces (plain text for zeek)
+get '/interfaces/enabled' do
+  enabled = physical_interfaces.reject { |i| STATE["disabled"].include?(i) }
+
+  content_type "text/plain"
+  enabled.join("\n")
 end
 
 # health check
