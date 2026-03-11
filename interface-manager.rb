@@ -4,6 +4,9 @@ require 'json'
 set :bind, '0.0.0.0'
 set :port, 8080
 
+# ปิด Host Authorization เพื่อให้เรียกผ่าน Service DNS ใน K8s ได้
+set :protection, :except => [:host_authorization, :json_csrf]
+
 STATE_FILE = "/data/state.json"
 
 # -----------------------------
