@@ -4,8 +4,11 @@ require 'json'
 set :bind, '0.0.0.0'
 set :port, 8080
 
-# ปิด Host Authorization เพื่อให้เรียกผ่าน Service DNS ใน K8s ได้
-set :protection, :except => [:host_authorization, :json_csrf]
+# 1. ปิดระบบ Protection ทั้งหมดของ Sinatra
+set :protection, false
+
+# 2. ปิด Host Authorization ในระดับ Rack โดยตรง (ถ้าข้อ 1 ยังไม่ออก)
+disable :protection
 
 STATE_FILE = "/data/state.json"
 
